@@ -1,0 +1,25 @@
+<form style="padding: 0 15px 0 15px" [formGroup]="myForm"  novalidate>
+  <div>
+      <input 
+        autocomplete="off"
+        autocorrect="off"
+        formControlName="email" 
+        (focus)="validateForm()" 
+        (blur)="validateForm()" 
+        placeholder="email" 
+        type="email" 
+        name="email">
+      <span align="start" *ngIf="formErrors.email" class="error">{{ formErrors.email }}</span>
+  </div>
+  <div>
+      <input appValidation [length]="10" [group]="myForm" [errors]="formErrors" formControlName="name" placeholder="nombre" type="text" name="name">
+      <span align="start" *ngIf="formErrors.name" class="error">{{ formErrors.name }}</span>
+  </div>
+  <div>
+      <input appValidation [group]="myForm" [errors]="formErrors" formControlName="password" placeholder="password" type="password" name="password">
+      <span align="start" *ngIf="formErrors.password" class="error">{{ formErrors.password }}</span>
+  </div>
+  <div>
+      <button type="submit" (click)="login()">Sign up</button>
+  </div>
+</form>
